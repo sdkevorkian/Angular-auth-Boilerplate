@@ -12,7 +12,7 @@ var app = express();
 // mongoose models and connection
 var mongoose = require('mongoose');
 var User = require('./models/user');
-mongoose.connect('mongodb://localhost/recipes');
+mongoose.connect('mongodb://localhost/database');
 
 // decode POST data in JSON and URL encoded formats
 app.use(bodyParser.json());
@@ -20,12 +20,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('morgan')('dev'));
 
-app.use('/api/recipes', require('./controllers/recipes'));
+
 app.use('/api/users', require('./controllers/users'));
 
 
 // Replace the above routes with the following
-app.use('/api/recipes', expressJWT({ secret: secret }), require('./controllers/recipes'));
+
 app.use('/api/users', expressJWT({ secret: secret }).unless({
     path: [{ url: '/api/users', methods: ['POST'] }]
 }), require('./controllers/users'));

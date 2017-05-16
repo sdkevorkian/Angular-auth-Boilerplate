@@ -12,7 +12,7 @@ app.config([
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'app/views/recipes.html',
+                templateUrl: 'app/views/home.html',
                 controller: 'HomeCtrl'
             })
             .state('signup', {

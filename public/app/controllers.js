@@ -1,4 +1,7 @@
 angular.module('Ctrls', ['AuthServices'])
+    .controller('HomeCtrl', ['$scope', function($scope) {
+        // add functionality here
+    }])
     .controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth) {
         $scope.Auth = Auth;
         $scope.logout = function() {
