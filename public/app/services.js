@@ -1,17 +1,14 @@
-angular.module('RecipeServices', ['ngResource'])
-    .factory('Recipe', ['$resource', function($resource) {
-        return $resource('/api/recipes/:id');
-    }])
+angular.module('AuthServices', ['ngResource'])
     .factory('Auth', ['$window', function($window) {
         return {
             saveToken: function(token) {
-                $window.localStorage['secretrecipes-token'] = token;
+                $window.localStorage['secret-token'] = token;
             },
             getToken: function() {
-                return $window.localStorage['secretrecipes-token'];
+                return $window.localStorage['secret-token'];
             },
             removeToken: function() {
-                $window.localStorage.removeItem('secretrecipes-token');
+                $window.localStorage.removeItem('secret-token');
             },
             isLoggedIn: function() {
                 var token = this.getToken();
