@@ -1,13 +1,15 @@
 angular.module('Ctrls', ['AuthServices'])
-    .controller('HomeCtrl', ['$scope', function($scope) {
-        // add functionality here
+    .controller('HomeCtrl', ['$scope', 'Auth', function($scope, Auth) {
+        console.log(Auth.currentUser());
     }])
     .controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth) {
         $scope.Auth = Auth;
         $scope.logout = function() {
             Auth.removeToken();
-            console.log('My token:', Auth.getToken());
         };
+    }])
+    .controller('AlertsCtrl', ['$scope', 'Alerts', function($scope, Alerts) {
+
     }])
     .controller('SignupCtrl', ['$scope', '$http', '$location', 'Auth', function($scope, $http, $location, Auth) {
         $scope.user = {
@@ -18,10 +20,10 @@ angular.module('Ctrls', ['AuthServices'])
             $http.post('/api/users', $scope.user).then(function success(res) {
                 $http.post('/api/auth', $scope.user).then(function success(res) {
                     Auth.saveToken(res.data.token);
-                    console.log('Token:', res.data.token);
+
                     $location.path('/');
                 }, function error(res) {
-                    console.log(data);
+                    console.log(res);
                 });
             }, function error(res) {
                 console.log(res);
@@ -39,7 +41,7 @@ angular.module('Ctrls', ['AuthServices'])
                 console.log('Token:', res.data.token);
                 $location.path('/');
             }, function error(res) {
-                console.log(data);
+                console.log(res);
             });
         };
     }]);
