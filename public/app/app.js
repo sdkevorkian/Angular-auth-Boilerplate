@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ui.router', 'Ctrls']);
+var app = angular.module('App', ['ui.router', 'Ctrls', 'ui.bootstrap']);
 
 app.config([
     '$stateProvider',
