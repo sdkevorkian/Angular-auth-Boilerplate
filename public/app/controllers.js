@@ -6,7 +6,7 @@ angular.module('Ctrls', ['AuthServices'])
     .controller('NavCtrl', ['$scope', 'Auth', 'Alerts', function($scope, Auth, Alerts) {
         $scope.Auth = Auth;
         $scope.logout = function() {
-            Alerts.add('sucess', 'You\'ve now logged out');
+            Alerts.add('success', 'You\'ve now logged out');
             Auth.removeToken();
         };
     }])
